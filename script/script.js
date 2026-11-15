@@ -63,15 +63,17 @@ function renderMovies(list) {
         }
 
         container.innerHTML += `
-      <div class="col-6 col-md-4 col-lg-3">
-        <article class="movie-card">
-          <img class="artwork" src="${movie.image}" alt="Poster of ${movie.title}">
-          <h3>${movie.title}</h3>
-          <p class="card-meta">${movie.year} &bull; <span class="star">&#9733;</span> ${movie.rating}</p>
-          <button type="button" class="btn btn-sm btn-outline-danger fav-btn" data-id="${movie.id}">${heart}</button>
-        </article>
-      </div>
-    `;
+  <div class="col-6 col-md-4 col-lg-3">
+    <article class="movie-card">
+      <a href="${movie.page}" class="text-reset text-decoration-none">
+        <img class="artwork" src="${movie.image}" alt="Poster of ${movie.title}">
+        <h3>${movie.title}</h3>
+      </a>
+      <p class="card-meta">${movie.year} &bull; <span class="star">&#9733;</span> ${movie.rating}</p>
+      <button type="button" class="btn btn-sm btn-outline-danger fav-btn" data-id="${movie.id}">${heart}</button>
+    </article>
+  </div>
+`;
     });
 }
 
