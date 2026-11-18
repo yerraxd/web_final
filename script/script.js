@@ -1,5 +1,5 @@
-// Stores ids of favorite movies (resets on page reload)
-let favorites = [];
+// Stores ids of favorite movies saved in localStorage
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 // Adds a movie to favorites, or removes it if it is already there
 function toggleFav(id) {
@@ -10,6 +10,7 @@ function toggleFav(id) {
     } else {
         favorites.push(id);
     }
+    localStorage.setItem("favorites", JSON.stringify(favorites));
     renderFavorites();
 }
 
