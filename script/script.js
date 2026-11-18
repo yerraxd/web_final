@@ -1,5 +1,16 @@
-// Stores ids of favorite movies saved in localStorage
-let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+// Reads an array from localStorage. If nothing is saved or the data is broken, returns []
+function loadList(key) {
+    try {
+        const data = JSON.parse(localStorage.getItem(key));
+        return Array.isArray(data) ? data : [];
+    } catch (e) {
+        return [];
+    }
+}
+
+// Stores ids of favorite and watched movies saved in localStorage
+let favorites = loadList("favorites");
+let watched = loadList("watched");
 
 // Adds a movie to favorites, or removes it if it is already there
 function toggleFav(id) {
@@ -12,6 +23,18 @@ function toggleFav(id) {
     }
     localStorage.setItem("favorites", JSON.stringify(favorites));
     renderFavorites();
+}
+
+// Adds a movie to watched, or removes it if it is already there
+function toggleWatched(id) {
+    if (watched.includes(id)) {
+        watched = watched.filter(function (item) {
+            return item !== id;
+        });
+    } else {
+        watched.push(id);
+    }
+    localStorage.setItem("watched", JSON.stringify(watched));
 }
 
 function renderFavorites() {
@@ -43,6 +66,17 @@ function addFav() {
                 e.target.textContent = "♡";
             }
         }
+
+        if (e.target.classList.contains("watched-btn")) {
+            const id = Number(e.target.dataset.id);
+            toggleWatched(id);
+
+            if (watched.includes(id)) {
+                e.target.textContent = "✓ Watched";
+            } else {
+                e.target.textContent = "Mark as watched";
+            }
+        }
     });
 
     document.getElementById("favorites-list").addEventListener("click", function (e) {
@@ -63,13 +97,21 @@ function renderMovies(list) {
             heart = "♥";
         }
 
+        let watchedText = "Mark as watched";
+        if (watched.includes(movie.id)) {
+            watchedText = "✓ Watched";
+        }
+
         container.innerHTML += `
       <div class="col-6 col-md-4 col-lg-3">
         <article class="movie-card">
+        <a href="${movie.page}" class="text-reset text-decoration-none">
           <img class="artwork" src="${movie.image}" alt="Poster of ${movie.title}">
           <h3>${movie.title}</h3>
+        </a>
           <p class="card-meta">${movie.year} &bull; <span class="star">&#9733;</span> ${movie.rating}</p>
           <button type="button" class="btn btn-sm btn-outline-danger fav-btn" data-id="${movie.id}">${heart}</button>
+          <button type="button" class="btn btn-sm btn-outline-success watched-btn ms-1" data-id="${movie.id}">${watchedText}</button>
         </article>
       </div>
     `;
@@ -137,6 +179,19 @@ function updateMovies() {
     renderMovies(sortMovies(filterMovies(query), order));
 }
 
+// Removes saved data from localStorage the theme is kept and refreshes the page
+function clearData() {
+    if (confirm("Delete all saved data?")) {
+        localStorage.removeItem("favorites");
+        localStorage.removeItem("watched");
+        localStorage.removeItem("contactDraft");
+        favorites = [];
+        watched = [];
+        renderFavorites();
+        updateMovies();
+    }
+}
+
 // Switches the Bootstrap theme and saves the choice in localStorage
 function setTheme(theme) {
     document.documentElement.setAttribute("data-bs-theme", theme);
@@ -172,6 +227,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         addFav();
         renderFavorites();
+
+        const clearButton = document.getElementById("clear-data");
+        if (clearButton) {
+            clearButton.addEventListener("click", clearData);
+        }
     }
 
     if (document.getElementById("seriesl")) {
@@ -193,6 +253,31 @@ document.addEventListener("DOMContentLoaded", function () {
     const email = document.getElementById("email");
     const message = document.getElementById("message");
     const success = document.getElementById("successMessage");
+
+    // Load the saved draft if there is one into the form fields
+    let draft = {};
+    try {
+        draft = JSON.parse(localStorage.getItem("contactDraft")) || {};
+    } catch (e) {
+        draft = {};
+    }
+    name.value = draft.name || "";
+    email.value = draft.email || "";
+    message.value = draft.message || "";
+
+    // Saves the draft every time the user types
+    function saveDraft() {
+        const data = {
+            name: name.value,
+            email: email.value,
+            message: message.value
+        };
+        localStorage.setItem("contactDraft", JSON.stringify(data));
+    }
+
+    name.addEventListener("input", saveDraft);
+    email.addEventListener("input", saveDraft);
+    message.addEventListener("input", saveDraft);
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -236,6 +321,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (valid) {
             success.hidden = false;
+            localStorage.removeItem("contactDraft");
             form.reset();
         }
     });
