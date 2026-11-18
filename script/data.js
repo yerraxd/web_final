@@ -7,7 +7,8 @@ const movies = [
         genre: "Sci-Fi",
         director: "Denis Villeneuve",
         runtime: 166,
-        image: "images/Dune2.jpg"
+        image: "images/Dune2.jpg",
+        page: "movies/dune.html"
     },
     {
         id: 2,
@@ -17,7 +18,8 @@ const movies = [
         genre: "Drama",
         director: "Christopher Nolan",
         runtime: 180,
-        image: "images/oppenheimer.jpg"
+        image: "images/oppenheimer.jpg",
+        page: "movies/oppenheimer.html"
     },
     {
         id: 3,
@@ -27,7 +29,8 @@ const movies = [
         genre: "Action",
         director: "Matt Reeves",
         runtime: 176,
-        image: "images/The_Batman.jpg"
+        image: "images/The_Batman.jpg",
+        page: "movies/batman.html"
     },
     {
         id: 4,
@@ -37,7 +40,8 @@ const movies = [
         genre: "Action",
         director: "Jon Watts",
         runtime: 148,
-        image: "images/Spider_Man.jpg"
+        image: "images/Spider_Man.jpg",
+        page: "movies/spiderman.html"
     },
     {
         id: 5,
@@ -47,7 +51,8 @@ const movies = [
         genre: "Sci-Fi",
         director: "Christopher Nolan",
         runtime: 169,
-        image: "images/Interstellar.jpg"
+        image: "images/Interstellar.jpg",
+        page: "movies/interstellar.html"
     },
     {
         id: 6,
@@ -57,67 +62,30 @@ const movies = [
         genre: "Sci-Fi",
         director: "Christopher Nolan",
         runtime: 148,
-        image: "images/inception.jpg"
+        image: "images/inception.jpg",
+        page: "movies/inception.html"
     },
     {
-        id: 8,
+        id: 7,
         title: "Parasite",
         year: 2019,
         rating: 8.5,
         genre: "Thriller",
         director: "Bong Joon-ho",
         runtime: 132,
-        image: "images/parasite.jpg"
+        image: "images/parasite.jpg",
+        page: "movies/parasite.html"
     },
     {
-        id: 9,
-        title: "Joker",
-        year: 2019,
-        rating: 8.4,
-        genre: "Drama",
-        director: "Todd Phillips",
-        runtime: 122,
-        image: "images/Joker.jpg"
-    },
-    {
-        id: 10,
-        title: "Top Gun: Maverick",
-        year: 2022,
-        rating: 8.2,
-        genre: "Action",
-        director: "Joseph Kosinski",
-        runtime: 130,
-        image: "images/Top_Gun_Maverick.jpg"
-    },
-    {
-        id: 11,
+        id: 8,
         title: "Gladiator",
         year: 2000,
         rating: 8.5,
         genre: "Action",
         director: "Ridley Scott",
         runtime: 155,
-        image: "images/Gladiator.jpg"
-    },
-    {
-        id: 12,
-        title: "The Matrix",
-        year: 1999,
-        rating: 8.7,
-        genre: "Sci-Fi",
-        director: "Lana Wachowski, Lilly Wachowski",
-        runtime: 136,
-        image: "images/The_Matrix.jpg"
-    },
-    {
-        id: 13,
-        title: "Fight Club",
-        year: 1999,
-        rating: 8.8,
-        genre: "Drama",
-        director: "David Fincher",
-        runtime: 139,
-        image: "images/Fight_Club.jpg"
+        image: "images/Gladiator.jpg",
+        page: "movies/gladiator.html"
     }
 ];
 
