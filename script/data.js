@@ -1,4 +1,4 @@
-const movies = [
+const moviesData  = [
     {
         id: 1,
         title: "Dune: Part Two",
