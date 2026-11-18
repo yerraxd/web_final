@@ -64,6 +64,28 @@ const movies = [
         runtime: 148,
         image: "images/inception.jpg",
         page: "movies/inception.html"
+    },
+    {
+        id: 7,
+        title: "Parasite",
+        year: 2019,
+        rating: 8.5,
+        genre: "Thriller",
+        director: "Bong Joon-ho",
+        runtime: 132,
+        image: "images/parasite.jpg",
+        page: "movies/parasite.html"
+    },
+    {
+        id: 8,
+        title: "Gladiator",
+        year: 2000,
+        rating: 8.5,
+        genre: "Action",
+        director: "Ridley Scott",
+        runtime: 155,
+        image: "images/Gladiator.jpg",
+        page: "movies/gladiator.html"
     }
 ];
 
