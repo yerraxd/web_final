@@ -36,7 +36,20 @@ class Movie {
       </div>
     `;
     }
+    // Returns one table row
+    getRowHTML() {
+        return `
+      <tr>
+        <th scope="row">${this.title}</th>
+        <td>${this.year}</td>
+        <td>${this.director}</td>
+        <td>${this.genre}</td>
+        <td>${this.runtime} min</td>
+      </tr>
+    `;
+    }
 }
+
 
 // Turn every plain object from data.js into a Movie object
 const movies = moviesData.map(function (data) {

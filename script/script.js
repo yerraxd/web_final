@@ -126,7 +126,13 @@ function filterMovies(query) {
         return movie.matches(query);
     });
 }
-
+function renderTable() {
+    const body = document.getElementById("movies-table-body");
+    body.innerHTML = "";
+    movies.forEach(function (movie) {
+        body.innerHTML += movie.getRowHTML();
+    });
+}
 
 // Returns a sorted copy of the list; slice() keeps the original array unchanged
 function sortMovies(list, order) {
@@ -202,7 +208,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (document.getElementById("moviestr")) {
         renderMovies(movies);
-
+        renderTable(movies);
         document.getElementById("search").addEventListener("input", updateMovies);
         document.getElementById("sort").addEventListener("change", updateMovies);
 
@@ -222,6 +228,7 @@ document.addEventListener("DOMContentLoaded", function () {
             renderSeries(filterSeries(e.target.value));
         });
     }
+
 });
 
 document.addEventListener("DOMContentLoaded", function () {
