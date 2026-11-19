@@ -7,9 +7,9 @@ Movie Land is a website about movies and series. This is the final version of ou
 
 ## Group members
 
-- Mukhtarova Dana
-- Omirtayev Yertore
-- Orynbassarov Yerassyl
+- **Omirtayev Yertore:** localStorage with JSON (favorites, watched movies, contact form draft, safe reading with `try/catch`, the "Clear saved data" button) and the statistics panel on the Movies page.
+- **Mukhtarova Dana:** object-oriented programming: the `Movie` class (`classes.js`) and its use in the Movies page (cards, search, table rows).
+- **Orynbassarov Yerassyl:** TVMaze API search on the Series page (`api.js`) with loading, success, empty and error states, personal notes on the movie pages (`moviepage.js`), and the movies table generated from data.
 
 ## Pages
 
