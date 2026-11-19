@@ -17,8 +17,11 @@ class Movie {
         return this.title.toLowerCase().includes(query.toLowerCase());
     }
 
-    // Returns the HTML of one card; heart is "♡" or "♥"
-    getCardHTML(heart) {
+    // Returns the HTML of one card
+    getCardHTML(isFav, isWatched) {
+        const heart = isFav ? "♥" : "♡";
+        const watchedText = isWatched ? "✓ Watched" : "Mark as watched";
+
         return `
       <div class="col-6 col-md-4 col-lg-3">
         <article class="movie-card">
@@ -28,6 +31,7 @@ class Movie {
           </a>
           <p class="card-meta">${this.year} &bull; <span class="star">&#9733;</span> ${this.rating}</p>
           <button type="button" class="btn btn-sm btn-outline-danger fav-btn" data-id="${this.id}">${heart}</button>
+          <button type="button" class="btn btn-sm btn-outline-success watched-btn ms-1" data-id="${this.id}">${watchedText}</button>
         </article>
       </div>
     `;

@@ -92,29 +92,10 @@ function renderMovies(list) {
     container.innerHTML = "";
 
     list.forEach(function (movie) {
-        let heart = "♡";
-        if (favorites.includes(movie.id)) {
-            heart = "♥";
-        }
-
-        let watchedText = "Mark as watched";
-        if (watched.includes(movie.id)) {
-            watchedText = "✓ Watched";
-        }
-
-        container.innerHTML += `
-      <div class="col-6 col-md-4 col-lg-3">
-        <article class="movie-card">
-        <a href="${movie.page}" class="text-reset text-decoration-none">
-          <img class="artwork" src="${movie.image}" alt="Poster of ${movie.title}">
-          <h3>${movie.title}</h3>
-        </a>
-          <p class="card-meta">${movie.year} &bull; <span class="star">&#9733;</span> ${movie.rating}</p>
-          <button type="button" class="btn btn-sm btn-outline-danger fav-btn" data-id="${movie.id}">${heart}</button>
-          <button type="button" class="btn btn-sm btn-outline-success watched-btn ms-1" data-id="${movie.id}">${watchedText}</button>
-        </article>
-      </div>
-    `;
+        container.innerHTML += movie.getCardHTML(
+            favorites.includes(movie.id),
+            watched.includes(movie.id)
+        );
     });
 }
 
@@ -141,11 +122,11 @@ function renderSeries(list) {
 
 // Returns a new array of movies whose title contains the search text
 function filterMovies(query) {
-    const lowerQuery = query.toLowerCase();
     return movies.filter(function (movie) {
-        return movie.title.toLowerCase().includes(lowerQuery);
+        return movie.matches(query);
     });
 }
+
 
 // Returns a sorted copy of the list; slice() keeps the original array unchanged
 function sortMovies(list, order) {
