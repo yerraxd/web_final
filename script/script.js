@@ -172,6 +172,9 @@ function clearData() {
         localStorage.removeItem("favorites");
         localStorage.removeItem("watched");
         localStorage.removeItem("contactDraft");
+        movies.forEach(function (movie) {
+            localStorage.removeItem("note-" + movie.id);
+        });
         favorites = [];
         watched = [];
         renderFavorites();
