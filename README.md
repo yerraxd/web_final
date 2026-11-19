@@ -73,7 +73,10 @@ web_final/
    - favorites, watched movies, notes and the contact form draft are saved and restored
    - data is stored as JSON; broken or missing values are handled with `try/catch`
    - the "Clear saved data" button on the Movies page removes everything (the theme stays)
-4. **Statistics panel** - on the Movies page: how many movies are watched, the average rating of watched movies and the number of favorites. It updates on every click.
+4. **Statistics dashboard** - on the Movies page: cards with the number of watched
+   movies, the average rating of watched movies and the number of favorites, plus
+   a progress bar with the percent of watched movies. It is built from the movies
+   data and the saved localStorage data, and updates on every click.
 5. **Movie notes** - on every movie page you can write a personal note, save it and delete it. The note is restored when you open the page again.
 
 Other changes: the "Movies at a Glance" table is now generated from the `movies` array, each movie has its own page, and cards have a "Mark as watched" button.
