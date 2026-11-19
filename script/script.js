@@ -23,6 +23,7 @@ function toggleFav(id) {
     }
     localStorage.setItem("favorites", JSON.stringify(favorites));
     renderFavorites();
+    renderStats();
 }
 
 // Adds a movie to watched, or removes it if it is already there
@@ -35,6 +36,7 @@ function toggleWatched(id) {
         watched.push(id);
     }
     localStorage.setItem("watched", JSON.stringify(watched));
+    renderStats();
 }
 
 function renderFavorites() {
@@ -119,13 +121,14 @@ function renderSeries(list) {
     });
 }
 
-
 // Returns a new array of movies whose title contains the search text
 function filterMovies(query) {
     return movies.filter(function (movie) {
         return movie.matches(query);
     });
 }
+
+// Fills the "Movies at a Glance" table from the movies array
 function renderTable() {
     const body = document.getElementById("movies-table-body");
     body.innerHTML = "";
@@ -151,6 +154,7 @@ function sortMovies(list, order) {
 
     return sorted;
 }
+
 function filterSeries(genre) {
     if (genre === "all") {
         return series;
@@ -166,7 +170,25 @@ function updateMovies() {
     renderMovies(sortMovies(filterMovies(query), order));
 }
 
-// Removes saved data from localStorage the theme is kept and refreshes the page
+// Shows how many movies are watched, their average rating and the favorites count
+function renderStats() {
+    const seen = movies.filter(function (movie) {
+        return watched.includes(movie.id);
+    });
+
+    let total = 0;
+    seen.forEach(function (movie) {
+        total += movie.rating;
+    });
+    const average = seen.length > 0 ? (total / seen.length).toFixed(1) : "-";
+
+    document.getElementById("stats").textContent =
+        "Watched: " + seen.length + " of " + movies.length +
+        " | Average rating of watched: " + average +
+        " | Favorites: " + favorites.length;
+}
+
+// Removes saved data from localStorage (the theme is kept) and refreshes the page
 function clearData() {
     if (confirm("Delete all saved data?")) {
         localStorage.removeItem("favorites");
@@ -179,6 +201,7 @@ function clearData() {
         watched = [];
         renderFavorites();
         updateMovies();
+        renderStats();
     }
 }
 
@@ -211,12 +234,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (document.getElementById("moviestr")) {
         renderMovies(movies);
-        renderTable(movies);
+        renderTable();
         document.getElementById("search").addEventListener("input", updateMovies);
         document.getElementById("sort").addEventListener("change", updateMovies);
 
         addFav();
         renderFavorites();
+        renderStats();
 
         const clearButton = document.getElementById("clear-data");
         if (clearButton) {
@@ -231,7 +255,6 @@ document.addEventListener("DOMContentLoaded", function () {
             renderSeries(filterSeries(e.target.value));
         });
     }
-
 });
 
 document.addEventListener("DOMContentLoaded", function () {
