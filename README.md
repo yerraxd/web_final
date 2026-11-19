@@ -1,27 +1,29 @@
 # Movie Land
 
-Movie Land is a multi-page website about movies and series. It is the endterm continuation of our midterm project (same topic). The midterm responsive layout, Bootstrap navbar and five pages are kept, and interactive JavaScript and jQuery features are added on top.
+Movie Land is a website about movies and series. This is the final version of our project. We kept the midterm and endterm work and added an API, a class, more localStorage and a few new features on top.
 
-**Live site:** https://yerraxd.github.io/endterm/index.html
+**Live site:** https://yerraxd.github.io/web_final/index.html
+**Repository:** https://github.com/yerraxd/web_final
 
 ## Group members
 
-- Member 1: Mukhtarova Dana
-- Member 2: Omirtayev Yertore
-- Member 3: Orynbassarov Yerassyl
+- Mukhtarova Dana
+- Omirtayev Yertore
+- Orynbassarov Yerassyl
 
 ## Pages
 
 - `index.html` - Home
-- `movies.html` - Movies (search, sort, favorites)
-- `series.html` - Series (genre filter)
+- `movies.html` - Movies (search, sort, favorites, watched, statistics, table)
+- `movies/*.html` - one page for each of the 8 movies, with a personal note
+- `series.html` - Series (genre filter and online search through the API)
 - `about.html` - About
-- `contact.html` - Contact (validated form)
+- `contact.html` - Contact (validated form with a saved draft)
 
 ## Project structure
 
 ```
-movie-land/
+web_final/
 ├── index.html
 ├── movies.html
 ├── series.html
@@ -30,47 +32,67 @@ movie-land/
 ├── README.md
 ├── css/
 │   └── style.css
+├── movies/
+│   └── dune.html, oppenheimer.html, batman.html, spiderman.html,
+│       interstellar.html, inception.html, parasite.html, gladiator.html
 ├── script/
 │   ├── data.js
+│   ├── classes.js
 │   ├── script.js
+│   ├── api.js
+│   ├── moviepage.js
 │   └── jquery.js
 └── images/
 ```
 
-- `data.js` - arrays `movies` and `series` with project data
-- `script.js` - JavaScript: rendering, search, sort, filter, favorites, theme, form validation
-- `jquery.js` - jQuery: effects and animations
+- `data.js` - plain data: `moviesData` and `series` arrays
+- `classes.js` - the `Movie` class, creates the `movies` array from `moviesData`
+- `script.js` - rendering, search, sort, filter, favorites, watched, statistics, theme, form validation, localStorage
+- `api.js` - TVMaze API search on the Series page
+- `moviepage.js` - notes on the movie pages
+- `jquery.js` - jQuery effects and animations
 
-## New endterm features
+## API
 
-### JavaScript
+- **API:** TVMaze, https://www.tvmaze.com/api (free, no API key needed)
+- **Endpoint:** `GET https://api.tvmaze.com/search/shows?q={query}`
+- **Where it is used:** Series page, "Search online" section
+- **How it works:** `fetch` with `async/await`. The JSON answer is turned into cards on the page.
+- **States:**
+  - loading: the text "Loading..." while the request is running
+  - success: cards with title, genres, year and rating, and the number of results
+  - empty: "Nothing found." when the API returns an empty list
+  - error: a red message if the network fails or the server answers with an error
+- If a show has no image, year or rating, the card shows a placeholder or "N/A".
 
-- **Dynamic content:** movie and series cards are created from the `movies` and `series` arrays with `forEach`, not written in HTML.
-- **Search:** filters movies by title while typing.
-- **Sort:** sorts movies by rating (ascending or descending).
-- **Favorites list:** add or remove movies with the heart button; the list is updated dynamically (elements are created and removed).
-- **Genre filter:** filters series by genre.
-- **Theme switcher:** dark/light mode, saved in `localStorage`.
-- **Contact form validation:** custom rules for name, email and message, error messages under each field, success message when valid.
+## Final-stage features
 
-### jQuery
+1. **API integration** - online series search with TVMaze (see above).
+2. **Object-oriented programming** - the `Movie` class has a constructor, properties and methods: `matches(query)` for the search, `getCardHTML()` for the movie card and `getRowHTML()` for the table row. All movies are objects created from this class.
+3. **localStorage**
+   - favorites, watched movies, notes and the contact form draft are saved and restored
+   - data is stored as JSON; broken or missing values are handled with `try/catch`
+   - the "Clear saved data" button on the Movies page removes everything (the theme stays)
+4. **Statistics panel** - on the Movies page: how many movies are watched, the average rating of watched movies and the number of favorites. It updates on every click.
+5. **Movie notes** - on every movie page you can write a personal note, save it and delete it. The note is restored when you open the page again.
 
-- **Back to top button:** appears with `fadeIn`/`fadeOut` after scrolling, scrolls up with `animate`.
-- **Series cards:** click on a card shows or hides extra info (`slideToggle`, `find`).
-- **About page:** click on the "How to use the site" title shows or hides the list (`slideToggle`, `next`).
-- **Hover effect:** cards scale up on `mouseenter` and back on `mouseleave`.
+Other changes: the "Movies at a Glance" table is now generated from the `movies` array, each movie has its own page, and cards have a "Mark as watched" button.
 
 ## How to test
 
 1. **Theme:** click "Light mode" / "Dark mode" in the navbar. Reload the page, the theme stays.
-2. **Search and sort (Movies page):** type a title in the search field, then change the Sort dropdown.
-3. **Favorites (Movies page):** click the heart on a card, it appears in "My Favorites". Click × to remove it.
-4. **Genre filter (Series page):** choose a genre in the dropdown.
-5. **Series details (Series page):** click a series card to show creator and seasons.
-6. **Form (Contact page):** submit an empty form to see errors. Try an invalid email and a short message. Fill in valid data to see the success message.
-7. **Back to top:** scroll down any page and click the arrow button in the corner.
-8. **About page:** click "How to use the site" to collapse the list.
+2. **Search and sort (Movies):** type a title in the search field and change the Sort dropdown.
+3. **Favorites and watched (Movies):** click the heart and "Mark as watched" on a card. The favorites list and the statistics change. Reload the page, the data stays.
+4. **Statistics (Movies):** mark two movies as watched and check the count and the average rating.
+5. **Movie pages:** click a movie card, write a note, press "Save note", reload the page. Press "Delete" to remove it.
+6. **API (Series):** in "Search online" search for `dark` (results), `qwertyuiop` (nothing found) and send an empty field (a hint). Turn on Offline in DevTools (Network tab) and search again to see the error message.
+7. **Genre filter (Series):** choose a genre in the dropdown.
+8. **Form (Contact):** type something and reload the page, the draft is restored. Submit an empty form to see the errors. Fill in valid data to see the success message.
+9. **Clear data (Movies):** press "Clear saved data" and confirm. Favorites, watched movies and notes are removed.
+10. **Back to top:** scroll down any page and click the arrow button in the corner.
+
+To run the site locally, download the project and open `index.html` in a browser. An internet connection is needed for Bootstrap, jQuery and the API.
 
 ## Technologies
 
-HTML5, CSS3, Bootstrap 5.3, JavaScript (ES6), jQuery 3.7
+HTML5, CSS3, Bootstrap 5.3, JavaScript (ES6, classes, async/await, fetch), jQuery 3.7, localStorage, TVMaze API
