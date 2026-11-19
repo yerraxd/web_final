@@ -170,7 +170,7 @@ function updateMovies() {
     renderMovies(sortMovies(filterMovies(query), order));
 }
 
-// Shows how many movies are watched, their average rating and the favorites count
+// Statistics dashboard: watched count, average rating, favorites and a progress bar
 function renderStats() {
     const seen = movies.filter(function (movie) {
         return watched.includes(movie.id);
@@ -181,11 +181,24 @@ function renderStats() {
         total += movie.rating;
     });
     const average = seen.length > 0 ? (total / seen.length).toFixed(1) : "-";
+    const percent = Math.round(seen.length / movies.length * 100);
 
-    document.getElementById("stats").textContent =
-        "Watched: " + seen.length + " of " + movies.length +
-        " | Average rating of watched: " + average +
-        " | Favorites: " + favorites.length;
+    document.getElementById("stats").innerHTML = `
+      <div class="col-md-4">
+        <div class="box h-100"><h3>Watched</h3><p class="fs-3">${seen.length} of ${movies.length}</p></div>
+      </div>
+      <div class="col-md-4">
+        <div class="box h-100"><h3>Average rating</h3><p class="fs-3">${average}</p></div>
+      </div>
+      <div class="col-md-4">
+        <div class="box h-100"><h3>Favorites</h3><p class="fs-3">${favorites.length}</p></div>
+      </div>
+      <div class="col-12">
+        <div class="progress" role="progressbar" aria-label="Watched movies" aria-valuenow="${percent}" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar bg-warning text-dark" style="width: ${percent}%">${percent}%</div>
+        </div>
+      </div>
+    `;
 }
 
 // Removes saved data from localStorage (the theme is kept) and refreshes the page

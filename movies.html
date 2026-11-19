@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 <head>
   <meta charset="UTF-8">
@@ -13,104 +13,106 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
 
-  <header class="site-header">
-    <nav class="navbar navbar-expand-lg container" aria-label="Main navigation">
-      <a class="navbar-brand brand" href="index.html">Movie Land</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link active" href="movies.html" aria-current="page">Movies</a></li>
-          <li class="nav-item"><a class="nav-link" href="series.html">Series</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          <li class="nav-item d-flex align-items-center">
-            <button type="button" id="theme-toggle" class="btn btn-sm btn-outline-secondary ms-lg-3 my-2 my-lg-0">Light mode</button>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-
-  <main class="flex-grow-1">
-    <section class="container section">
-      <h1 class="page-title">Movies</h1>
-      <p class="lead-text">Our current picks. The table below has more details.</p>
-    </section>
-
-    <section class="container section" id="trending-movies">
-      <h2 class="section-title">Trending Movies</h2>
-      <div class="search-sort mb-4">
-        <div>
-          <label class="form-label" for="search">Search</label>
-          <input class="form-control" type="text" id="search" placeholder="Search by title">
-        </div>
-        <div>
-          <label class="form-label" for="sort">Sort</label>
-          <select class="form-select" id="sort">
-            <option value="default">Default</option>
-            <option value="desc">Rating ↓</option>
-            <option value="asc">Rating ↑</option>
-          </select>
-        </div>
-      </div>
-      <div class="row g-4" id="moviestr">
-      </div>
-    </section>
-    <section class="container section">
-      <h2 class="section-title">My Favorites</h2>
-      <div id="favorites-list"></div>
-      <button type="button" id="clear-data" class="btn btn-sm btn-outline-danger mt-3">Clear saved data</button>
-    </section>
-
-    <section class="container section" id="movie-details">
-      <section class="container section">
-        <h2 class="section-title">Your stats</h2>
-        <p id="stats" class="muted"></p>
-      </section>
-      <h2 class="section-title">Movies at a Glance</h2>
-      <div class="table-responsive">
-        <table class="table">
-          <caption>Featured movies and their main details</caption>
-          <thead>
-          <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Year</th>
-            <th scope="col">Director</th>
-            <th scope="col">Genre</th>
-            <th scope="col">Runtime</th>
-          </tr>
-          </thead>
-          <tbody id="movies-table-body"></tbody>
-        </table>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p class="footer-brand">Movie Land</p>
-      <nav aria-label="Footer navigation">
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="movies.html">Movies</a></li>
-          <li><a href="series.html">Series</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <p class="copyright">&copy; 2026 Movie Land</p>
+<header class="site-header">
+  <nav class="navbar navbar-expand-lg container" aria-label="Main navigation">
+    <a class="navbar-brand brand" href="index.html">Movie Land</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="movies.html" aria-current="page">Movies</a></li>
+        <li class="nav-item"><a class="nav-link" href="series.html">Series</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item d-flex align-items-center">
+          <button type="button" id="theme-toggle" class="btn btn-sm btn-outline-secondary ms-lg-3 my-2 my-lg-0">Light mode</button>
+        </li>
+      </ul>
     </div>
-  </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="script/data.js"></script>
-  <script src="script/classes.js"></script>
-  <script src="script/script.js"></script>
-  <script src="script/jquery.js"></script>
+  </nav>
+</header>
 
-  <button type="button" id="back-to-top" class="btn btn-accent" aria-label="Back to top">&uarr;</button>
+<main class="flex-grow-1">
+  <section class="container section">
+    <h1 class="page-title">Movies</h1>
+    <p class="lead-text">Our current picks. The table below has more details.</p>
+  </section>
+
+  <section class="container section" id="trending-movies">
+    <h2 class="section-title">Trending Movies</h2>
+    <div class="search-sort mb-4">
+      <div>
+        <label class="form-label" for="search">Search</label>
+        <input class="form-control" type="text" id="search" placeholder="Search by title">
+      </div>
+      <div>
+        <label class="form-label" for="sort">Sort</label>
+        <select class="form-select" id="sort">
+          <option value="default">Default</option>
+          <option value="desc">Rating ↓</option>
+          <option value="asc">Rating ↑</option>
+        </select>
+      </div>
+    </div>
+    <div class="row g-4" id="moviestr">
+    </div>
+  </section>
+
+  <section class="container section">
+    <h2 class="section-title">My Favorites</h2>
+    <div id="favorites-list"></div>
+    <button type="button" id="clear-data" class="btn btn-sm btn-outline-danger mt-3">Clear saved data</button>
+  </section>
+
+  <section class="container section" id="stats-panel">
+    <h2 class="section-title">Your stats</h2>
+    <div class="row g-4" id="stats" aria-live="polite"></div>
+  </section>
+
+  <section class="container section" id="movie-details">
+    <h2 class="section-title">Movies at a Glance</h2>
+    <div class="table-responsive">
+      <table class="table">
+        <caption>Featured movies and their main details</caption>
+        <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Year</th>
+          <th scope="col">Director</th>
+          <th scope="col">Genre</th>
+          <th scope="col">Runtime</th>
+        </tr>
+        </thead>
+        <tbody id="movies-table-body"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p class="footer-brand">Movie Land</p>
+    <nav aria-label="Footer navigation">
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="movies.html">Movies</a></li>
+        <li><a href="series.html">Series</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <p class="copyright">&copy; 2026 Movie Land</p>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="script/data.js"></script>
+<script src="script/classes.js"></script>
+<script src="script/script.js"></script>
+<script src="script/jquery.js"></script>
+
+<button type="button" id="back-to-top" class="btn btn-accent" aria-label="Back to top">&uarr;</button>
 </body>
 </html>
