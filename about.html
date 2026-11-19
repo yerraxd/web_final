@@ -13,89 +13,119 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
 
-  <header class="site-header">
-    <nav class="navbar navbar-expand-lg container" aria-label="Main navigation">
-      <a class="navbar-brand brand" href="index.html">Movie Land</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="movies.html">Movies</a></li>
-          <li class="nav-item"><a class="nav-link" href="series.html">Series</a></li>
-          <li class="nav-item"><a class="nav-link active" href="about.html" aria-current="page">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          <li class="nav-item d-flex align-items-center">
-            <button type="button" id="theme-toggle" class="btn btn-sm btn-outline-secondary ms-lg-3 my-2 my-lg-0">Light mode</button>
-          </li>
+<header class="site-header">
+  <nav class="navbar navbar-expand-lg container" aria-label="Main navigation">
+    <a class="navbar-brand brand" href="index.html">Movie Land</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="movies.html">Movies</a></li>
+        <li class="nav-item"><a class="nav-link" href="series.html">Series</a></li>
+        <li class="nav-item"><a class="nav-link active" href="about.html" aria-current="page">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item d-flex align-items-center">
+          <button type="button" id="theme-toggle" class="btn btn-sm btn-outline-secondary ms-lg-3 my-2 my-lg-0">Light mode</button>
+        </li>
       </ul>
-      </div>
-      </nav>
-  </header>
-
-  <main class="flex-grow-1">
-    <section class="container section">
-      <h1 class="page-title">About Movie Land</h1>
-      <p class="lead-text">A simple guide to movies and series from around the world.</p>
-    </section>
-
-    <section class="container section" id="idea">
-      <h2 class="section-title">Our idea</h2>
-      <p>Movie Land helps you find something to watch. We collect trending movies and popular series in one place, so you do not have to search many sites.</p>
-      <p>This website is a university project built with HTML, CSS and Bootstrap.</p>
-    </section>
-
-    <section class="container section" id="features">
-      <h2 class="section-title">What you can do</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="box h-100">
-           <h3>Browse movies</h3>
-            <p class="muted">See trending movies with their year, rating, director and genre.</p>
-         </div>
-        </div>
-        <div class="col-md-4">
-          <div class="box h-100">
-          <h3>Send feedback</h3>
-          <p class="muted">Tell us which movie or series we should add next.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="container section" id="how-to-use">
-      <h2 class="section-title">How to use the site</h2>
-      <ol>
-        <li>Open the Movies or Series page.</li>
-        <li>Pick a title you like.</li>
-        <li>Use the Contact page to suggest new titles.</li>
-      </ol>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p class="footer-brand">Movie Land</p>
-      <nav aria-label="Footer navigation">
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="movies.html">Movies</a></li>
-          <li><a href="series.html">Series</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <p class="copyright">&copy; 2026 Movie Land</p>
     </div>
-  </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="script/data.js"></script>
-  <script src="script/classes.js"></script>
-  <script src="script/script.js"></script>
-  <script src="script/jquery.js"></script>
+  </nav>
+</header>
 
-  <button type="button" id="back-to-top" class="btn btn-accent" aria-label="Back to top">&uarr;</button>
+<main class="flex-grow-1">
+  <section class="container section">
+    <h1 class="page-title">About Movie Land</h1>
+    <p class="lead-text">A simple guide to movies and series from around the world.</p>
+  </section>
+
+  <section class="container section" id="idea">
+    <h2 class="section-title">Our idea</h2>
+    <p>Movie Land helps you find something to watch. We collect popular movies and series in one place, so you do not have to search many sites. You can also keep your own list: add favorites, mark what you have watched and write notes about movies.</p>
+    <p>This website is a university project built with HTML, CSS, Bootstrap, JavaScript and jQuery. This is the final version: we started with a simple multi-page site, added interactive features in the endterm, and now it also uses an online API and saves your data in the browser.</p>
+  </section>
+
+  <section class="container section" id="features">
+    <h2 class="section-title">What you can do</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="box h-100">
+          <h3>Browse movies</h3>
+          <p class="muted">See movies with their year, rating, director and genre. Search by title and sort by rating.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="box h-100">
+          <h3>Find series online</h3>
+          <p class="muted">Search any series through the TVMaze API and see its genres, year and rating.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="box h-100">
+          <h3>Build your list</h3>
+          <p class="muted">Add movies to favorites, mark them as watched and check your statistics. Everything is saved in your browser.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="box h-100">
+          <h3>Write notes</h3>
+          <p class="muted">Open a movie page and write a personal note. You can save it or delete it at any time.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="box h-100">
+          <h3>Choose your theme</h3>
+          <p class="muted">Switch between dark and light mode. The site remembers your choice.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="box h-100">
+          <h3>Send feedback</h3>
+          <p class="muted">Tell us which movie or series we should add next. Your draft is saved if you leave the page.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section" id="how-to-use">
+    <h2 class="section-title">How to use the site</h2>
+    <ol>
+      <li>Open the Movies or Series page.</li>
+      <li>Pick a title you like. Add it to favorites or mark it as watched.</li>
+      <li>Open a movie page to read more and write your own note.</li>
+      <li>Use the Contact page to suggest new titles.</li>
+    </ol>
+  </section>
+
+  <section class="container section" id="team">
+    <h2 class="section-title">Our team</h2>
+    <p>Mukhtarova Dana, Omirtayev Yertore and Orynbassarov Yerassyl.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p class="footer-brand">Movie Land</p>
+    <nav aria-label="Footer navigation">
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="movies.html">Movies</a></li>
+        <li><a href="series.html">Series</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <p class="copyright">&copy; 2026 Movie Land</p>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="script/data.js"></script>
+<script src="script/classes.js"></script>
+<script src="script/script.js"></script>
+<script src="script/jquery.js"></script>
+
+<button type="button" id="back-to-top" class="btn btn-accent" aria-label="Back to top">&uarr;</button>
 </body>
 </html>
